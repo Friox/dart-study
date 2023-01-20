@@ -1,5 +1,5 @@
 # 01 Variables
-2023.01.19 ~ 진행중 
+2023.01.19 ~ 2023.01.20 
 
 ## 변수 선언
 dart에서 변수를 선언할때는 형식을 직접 지정하거나  
@@ -69,3 +69,26 @@ if (ex != null) {
 	ex.isNotEmpty;
 }
 ```
+
+## Final Variables
+JS에서의 const 같은것.  
+한번 할당된 값은 나중에 수정할 수 없다.
+선언 시 값을 안넣어주면 할당 해제된 상태로 읽을 수 없다.
+```javascript
+final ex;
+// print(ex)	error
+ex = 'hello';	// TYPE: String
+// ex = 'hi';	error, final keyword
+```
+
+## Late Varables
+late는 final이나 var앞에 붙여줄 수 있는 수식어.  
+초기화 시점을 뒤로 미루어주는 키워드다.  
+late 키워드를 사용한 변수는, 값이 할당되지 않은 상태에서 접근을 시도하면  
+예외를 발생시킨다. 사실 명시적으로 알아보기 쉽게하려는 쪽에 더 가깝다.
+
+## Constant Variables
+Dart 에서의 const는 JS, TS 에서의 const와 다르다.  
+컴파일 시점에서 알고있는 값이 들어가는 변수다.  
+나중에 API에서 받아오는 값 같이 어떤값인지 모르는 값은 들어갈 수 없다.  
+API 키값이나 그런것들이 들어가는 변수
