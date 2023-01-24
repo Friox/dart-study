@@ -51,3 +51,39 @@ String fullName({required String familyName, required tring givenName}) {
 	return '$familyName $givenName';
 }
 ```
+
+## Optional Positional Parameter
+위치매개변수를 사용할때 굳이 필요없는 매개변수를 정할 수 있다.  
+```javascript
+int plus(int a, int b, [int? c]) => a + b + c;
+```
+이렇게 꼭 필요없는 매개변수를 괄호로 묶고 null을 허용한다고 하면 된다.  
+이 방식은 중간에 위치한 매개변수에는 사용할 수 없고, 끝에오는것만 가능하다.  
+3개의 매개변수가 있다고 하면, 두번째 매개변수만 옵션으로 받을 수 없고,  
+3번째 매개변수 하나만 옵션으로 정하거나 두번째, 세번째 매개변수를 옵션으로 지정할 수 있다.  
+String 형식은 String Interpolation을 사용할때 null이어도 정상적으로 표시하기때문에 상관없지만  
+그 이외 자료형은 null을 체크한 후 사용해야한다.  
+위 코드로 예시를 들면,  
+```javascript
+// 오류나는 코드
+int plus(int a, int b, [int? c]) => a + b + c;
+
+// 정상 코드
+int plus(int a, int b, [int? c]) => a + b + (c ?? 0);
+```
+통상 Optional Positional Parameter를 사용할때는 매개변수에 null이 올 수 있다고 표시하고,  
+기본값을 지정해준다.  
+`??`는 `QQ Operator`이다.
+
+## QQ Operator
+`Question Question Operator`로 null 값을 다루는 연산자이다.  
+두가지가 있다. `left (QQ Operator) right` 일때,  
+`??` : (left ?? right) **left가 null이면 right를 반환, 그렇지 않으면 left를 반환**  
+`??=` : (left ??= right) **left가 null이면 right를 left에 대입, 아니면 실행X**
+
+## Typedef
+C하고 똑같다  
+```javascript
+typedef intStringMap = Map<int, String>;
+intStringMap m1;
+```
